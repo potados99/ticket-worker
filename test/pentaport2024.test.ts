@@ -17,4 +17,19 @@ describe('펜타포트 2024 시나리오 테스트', () => {
 
     await interpark.run(scenario);
   });
+
+  it('기다려보자! 8월 4일 취소표', async () => {
+    const scenario = pentaport2024({
+      date: new Date('2024-08-04'),
+      birthday: '990211',
+      delay: 1000
+    });
+
+    const interpark = new Interpark({
+      username: process.env.USERNAME || '',
+      password: process.env.PASSWORD || ''
+    });
+
+    await interpark.run(scenario);
+  }, 1000000);
 });

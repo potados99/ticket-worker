@@ -28,9 +28,9 @@ export function pentaport2024(params: {date: Date, birthday: string, delay: numb
           {
             name: '날짜 선택',
             execute: async (page) => {
-              const s = `#productSide > div > div.sideMain > div.sideContainer.containerTop.sideToggleWrap > div.sideContent.toggleCalendar > div > div > div > div > ul:nth-child(3) > li:nth-child(${params.date.getDate() + 4/*8월 4일이 8임*/})`;
+              const s = `#productSide > div > div.sideMain > div.sideContainer.containerTop.sideToggleWrap > div.sideContent.toggleCalendar > div > div > div > div > ul:nth-child(3) > li:nth-child(${date.getDate() + 4})`;
               await page.waitForSelector(s, {visible: true});
-              await page.click(s);
+              await page.$eval(s, e => (e as HTMLElement).click());
             }
           },
           {
