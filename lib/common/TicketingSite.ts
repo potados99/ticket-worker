@@ -31,21 +31,23 @@ export default abstract class TicketingSite {
       executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
     });
 
-    const loginPage = await browser.newPage();
-    await this.loginIfNeeded(loginPage);
-    await loginPage.close();
+    while (true) {
+      const loginPage = await browser.newPage();
+      await this.loginIfNeeded(loginPage);
+      await loginPage.close();
 
-    let page = await browser.newPage();
+      try {
+        await this.executeSteps(await browser.newPage(), scenario.steps);
+        return; // 무사히 종료!
+      } catch (e) {
+        console.error(e); // 에러터지면 처음부터,,
+        for (const page of await browser.pages()) {
+          await page.close();
+        }
+      } finally {
 
-    try {
-      await this.executeSteps(page, scenario.steps);
-    } catch (e) {
-      console.error(e);
-    } finally {
-      // await page.close();
+      }
     }
-
-    await sleep(2000);
   }
 
   public abstract loginIfNeeded(newPage: Page): Promise<void>;

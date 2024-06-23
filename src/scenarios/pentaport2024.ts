@@ -64,8 +64,8 @@ export function pentaport2024(params: {date: Date, birthday: string, delay: numb
 
                 const text = await frame.$eval('#PriceRow005 > td.taL > select', e => e.innerText);
                 if (text === '매진') {
-                  await sleep(1000); // 기다리자...
-                  console.log('매진...');
+                  await sleep(10); // 기다리자...
+                  console.log(new Date(), '매진...');
                 } else {
                   break; // 드디어 갈 수 있다.
                 }
