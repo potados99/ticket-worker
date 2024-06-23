@@ -1,5 +1,5 @@
 import {Page} from 'puppeteer';
-import TicketingSite from '../../common/TicketingSite';
+import TicketingSite from '../common/TicketingSite';
 
 export default class Interpark extends TicketingSite {
   public async loginIfNeeded(newPage: Page): Promise<void> {

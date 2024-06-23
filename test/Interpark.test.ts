@@ -1,6 +1,5 @@
-import Interpark from '../lib/sites/interpark/Interpark';
+import Interpark from '../lib/sites/Interpark';
 import {sleep} from '../lib/common/util';
-import {Page} from 'puppeteer';
 
 describe('Interpark', () => {
   it('가나?', async () => {

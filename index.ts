@@ -1,1 +1,1 @@
-import Interpark from './lib/sites/interpark/Interpark';
+import Interpark from './lib/sites/Interpark';
