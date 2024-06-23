@@ -16,4 +16,4 @@ async function run() {
   await interpark.run(scenario);
 }
 
-run().then(() => console.log('시작!'));
+run().then(() => console.log('완료!'));
