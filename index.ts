@@ -1,0 +1,1 @@
+import Interpark from './lib/sites/interpark/Interpark';
