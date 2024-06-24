@@ -5,6 +5,7 @@ async function run() {
   const scenario = pentaport2024({
     date: new Date('2024-08-04'),
     birthday: '990211',
+    priceGrade: '입장권',
     delay: 800
   });
 

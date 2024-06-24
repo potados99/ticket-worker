@@ -1,9 +1,9 @@
 import {sleep} from '../../lib/common/util';
 import {Instruction, Scenario} from '../../lib/common/TicketingSite';
 
-export function pentaport2024(params: {date: Date, birthday: string, delay: number}): Scenario {
+export function pentaport2024(params: {date: Date, birthday: string, priceGrade: string, delay: number}): Scenario {
   const goodsCode = `24005722`;
-  const {date, birthday, delay} = params;
+  const {date, birthday, priceGrade, delay} = params;
 
   if (date < new Date('2024-08-03') || date > new Date('2024-08-05')) {
     throw new Error('펜타포트 2024는 8/3부터 8/5입니다~');
@@ -60,9 +60,10 @@ export function pentaport2024(params: {date: Date, birthday: string, delay: numb
                 }
                 const frame = await iframe.contentFrame();
 
-                await frame.waitForSelector('#PriceRow002');
+                const s = `select[pricegradename='${priceGrade}']`;
+                await frame.waitForSelector(s);
 
-                const text = await frame.$eval('#PriceRow005 > td.taL > select', e => e.innerText);
+                const text = await frame.$eval(s, e => (e as HTMLSelectElement).innerText);
                 if (text === '매진') {
                   await sleep(10); // 기다리자...
                   console.log(new Date(), '매진...');
@@ -81,7 +82,7 @@ export function pentaport2024(params: {date: Date, birthday: string, delay: numb
               }
               const frame = await iframe.contentFrame();
 
-              const s = '#PriceRow005 > td.taL > select';
+              const s = `select[pricegradename='${priceGrade}']`;
               await frame.waitForSelector(s);
               await frame.select(s, '1');
             }

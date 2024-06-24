@@ -7,6 +7,7 @@ describe('펜타포트 2024 시나리오 테스트', () => {
     const scenario = pentaport2024({
       date: new Date('2024-08-03'),
       birthday: '990211',
+      priceGrade: '입장권_KB국민카드 결제15%',
       delay: 1000
     });
 
@@ -22,6 +23,7 @@ describe('펜타포트 2024 시나리오 테스트', () => {
     const scenario = pentaport2024({
       date: new Date('2024-08-04'),
       birthday: '990211',
+      priceGrade: '입장권_KB국민카드 결제15%',
       delay: 1000
     });
 
