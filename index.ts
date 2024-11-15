@@ -1,11 +1,10 @@
 import Interpark from './lib/sites/Interpark';
-import {pentaport2024} from './src/scenarios/pentaport2024';
+import {ydbb2024} from './src/scenarios/YdBB2024';
 
 async function run() {
-  const scenario = pentaport2024({
-    date: new Date('2024-08-04'),
-    birthday: '990211',
-    priceGrade: '입장권',
+  const scenario = ydbb2024({
+    date: new Date('2024-12-30'),
+    block: '101',
     delay: 800
   });
 
