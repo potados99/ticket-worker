@@ -1,5 +1,6 @@
-import {sleep} from './util';
-import puppeteer, {Page} from 'puppeteer';
+import {Page} from 'puppeteer';
+import puppeteerExtra from 'puppeteer-extra';
+import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 
 export type Credential = {
   username: string;
@@ -26,7 +27,9 @@ export default abstract class TicketingSite {
   }
 
   public async run(scenario: Scenario): Promise<void> {
-    const browser = await puppeteer.launch({
+    puppeteerExtra.use(StealthPlugin());
+
+    const browser = await puppeteerExtra.launch({
       headless: false,
       executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
     });
